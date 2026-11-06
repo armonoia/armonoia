@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Armonoia | Experiencia interactiva</title>
+  <meta name="description" content="Armonoia: una experiencia interactiva en Unreal Engine 5 sobre lo que queremos hacer y lo que debemos hacer.">
+  <link rel="stylesheet" href="lukas.css">
+  <link rel="stylesheet" href="armonoia.css">
+  <link rel="stylesheet" href="armonoia-extra.css">
+</head>
+<body>
+
+  <!-- El fondo es tu imagen (fondo.png), se configura en lukas.css -->
+
+  <!-- Barra superior -->
+  <header class="nav">
+    <div class="contenedor">
+      <a href="#inicio"><img class="logo-nav" src="logo.png" alt="Armonoia" data-fallback="Armonoia"></a>
+      <nav class="nav-links">
+        <a href="#armonoia">Armonoia</a>
+        <a href="#lukas">Lukas</a>
+        <a href="#controles">Cómo se juega</a>
+        <a href="#fases">Fases</a>
+        <a href="#equipo">Equipo</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Portada: logo + promesa -->
+  <section class="hero" id="inicio">
+    <div class="contenedor">
+      <!-- Logo grande: una hoja rasgada deja ver el logo que está atrás -->
+      <div class="logo-collage">
+        <div class="logo-fondo" data-rasgado="9">
+          <img class="logo" src="logo.png" alt="Logo de Armonoia" data-fallback="Armonoia">
+        </div>
+        <div class="logo-hoja" id="hojaLogo"></div>
+        <span class="cinta cinta-c1"></span>
+        <span class="cinta cinta-c2"></span>
+      </div>
+      <p class="sobretitulo">Experiencia interactiva · Unreal Engine 5</p>
+
+      <!-- La promesa, tipo carta de rescate: cada palabra es un recorte distinto -->
+      <h1 class="rescate">
+        <span>Entre</span> <span>lo</span> <span>que</span> <span>quiero</span> <span>y</span> <span>lo</span> <span>que</span> <span>debo</span>
+      </h1>
+
+      <a href="#armonoia" class="btn btn-verde">¿Qué es Armonoia?</a>
+      <a href="#fases" class="btn btn-fucsia">Ver las fases</a>
+    </div>
+  </section>
+
+  <!-- Cinta de peligro + cartel que corre -->
+  <section class="franja">
+    <div class="franja-inner">
+      <div class="peligro"></div>
+      <div class="ticker">
+        <div class="ticker-pista">
+          <span>Lo que quiero ✶ Lo que debo ✶ Armonoia ✶ Skate ✶ Nu metal ✶ Graffiti ✶ Lo que quiero ✶ Lo que debo ✶ Armonoia ✶ Skate ✶ Nu metal ✶ Graffiti ✶ </span>
+          <span>Lo que quiero ✶ Lo que debo ✶ Armonoia ✶ Skate ✶ Nu metal ✶ Graffiti ✶ Lo que quiero ✶ Lo que debo ✶ Armonoia ✶ Skate ✶ Nu metal ✶ Graffiti ✶ </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Qué es Armonoia -->
+  <section id="armonoia">
+    <div class="contenedor">
+      <h2 class="titulo-seccion">¿Qué es Armonoia?</h2>
+
+      <div class="armonoia-grid reveal">
+        <div class="choque" role="img" aria-label="Armonía más paranoia es Armonoia">
+          <span class="pieza p1">Armonía</span>
+          <span class="signo">+</span>
+          <span class="pieza p2">Paranoia</span>
+          <span class="signo">=</span>
+          <span class="pieza p3">Armonoia</span>
+        </div>
+
+        <div class="texto-armonoia">
+          <p>
+            <b>Armonoia nace de la tensión entre armonía y paranoia.</b> Es una experiencia
+            interactiva, hecha en Unreal Engine 5 
+            donde vivís cómo el tiempo que le dedicamos a lo que <mark>debemos hacer</mark> nos
+            aleja de lo que <mark class="m2">nos apasiona hacer</mark>.
+          </p>
+          <p>
+            Está pensada para quienes, entre lo que quieren y lo que desean, terminan dejando
+            de lado eso que los apasiona. Lo que buscamos generar es una pregunta:
+            <b>¿existe algo entre lo que quiero y lo que deseo?</b>
+          </p>
+        </div>
+      </div>
+
+      <div class="debo-quiero reveal">
+        <div class="nota nota-debo">
+          <span class="cinta"></span>
+          <h3>Lo que quiero</h3>
+          <ul>
+            <li>Limpiar la vidriera</li>
+            <li>Ordenar las rueditas</li>
+            <li>Barrer el taller</li>
+            <li>Cerrar la caja</li>
+          </ul>
+        </div>
+        <div class="nota nota-quiero">
+          <span class="cinta"></span>
+          <h3>Lo que deseo</h3>
+          <ul>
+            <li>Graffitear</li>
+            <li>Comer algo rico</li>
+            <li>Ir a un recital</li>
+            <li>Andar en skate</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ficha del personaje -->
+  <section id="lukas">
+    <div class="contenedor">
+      <h2 class="titulo-seccion">Conocé a Lukas</h2>
+
+      <div class="reveal">
+        <div class="ficha-marco">
+          <span class="cinta cinta-top"></span>
+          <span class="cinta cinta-lado"></span>
+
+          <div class="ficha" data-rasgado="11">
+
+            <figure class="polaroid">
+              <span class="cinta cinta-izq"></span>
+              <span class="cinta cinta-der"></span>
+              <img src="lukas.png" alt="Foto de Lukas" data-fallback="🛹 Foto de Lukas">
+              <figcaption>Lukas</figcaption>
+            </figure>
+
+            <div class="datos">
+              <h3>Lukas</h3>
+
+              <ul class="basicos">
+                <li><b>Edad:</b> 26</li>
+                <li><b>Trabajo:</b> Empleado en un local de skate</li>
+              </ul>
+
+              <h4>Bio</h4>
+              <p>
+                Lukas es un apasionado del skate. Su trabajo le encanta, pero muchas veces lo
+                que tiene que hacer le aburre y desea hacer otras cosas que no puede en ese
+                momento. Sus deseos y sentimientos pueden distorsionar su realidad.
+              </p>
+
+              <h4>Le gusta</h4>
+              <ul class="gustos">
+                <li>Skate</li>
+                <li>Videojuegos</li>
+                <li>Graffiti</li>
+                <li>Música</li>
+              </ul>
+
+              <h4>Bandas que escucha</h4>
+              <ul class="bandas">
+                <li class="fav">Limp Bizkit ⭐</li>
+                <li>Linkin Park</li>
+                <li>Alice in Chains</li>
+                <li>Korn</li>
+                <li>Paramore</li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cómo se juega -->
+  <section id="controles">
+    <div class="contenedor">
+      <h2 class="titulo-seccion">Cómo se juega</h2>
+      <p class="intro-seccion">Antes de entrar, esto es lo que tenés que saber:</p>
+
+      <div class="controles-grid">
+
+        <article class="ctrl reveal">
+          <span class="cinta"></span>
+          <div class="ctrl-papel" data-rasgado="8">
+            <h3>Moverte</h3>
+            <div class="teclas-wasd">
+              <button type="button" class="tecla tecla-w" data-tecla="w">W</button>
+              <button type="button" class="tecla tecla-a" data-tecla="a">A</button>
+              <button type="button" class="tecla tecla-s" data-tecla="s">S</button>
+              <button type="button" class="tecla tecla-d" data-tecla="d">D</button>
+            </div>
+            <p>Con <b>W A S D</b> caminás por el local en primera persona y mirás alrededor con el mouse.</p>
+          </div>
+        </article>
+
+        <article class="ctrl reveal">
+          <span class="cinta"></span>
+          <div class="ctrl-papel" data-rasgado="8">
+            <h3>Interactuar</h3>
+            <div class="teclas-e">
+              <button type="button" class="tecla tecla-e" data-tecla="e">E</button>
+            </div>
+            <p>Con la <b>E</b> interactuas con todo. Limpiás la vidriera, barrés, prendés la tele, abrís puertas y movés skates y cajas.</p>
+          </div>
+        </article>
+
+        <article class="ctrl reveal">
+          <span class="cinta"></span>
+          <div class="ctrl-papel" data-rasgado="8">
+            <h3>Webs y QR</h3>
+            <div class="qr" id="qrEjemplo" role="img" aria-label="Ejemplo ilustrativo de un código QR"></div>
+            <p>En pantalla vas a ver <b>códigos QR y links</b>. Abren webs externas al juego (el WhatsApp de Lukas, la compra de entradas) para seguir la experiencia.</p>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Simulación del WhatsApp -->
+      <div class="wpp-bloque reveal">
+        <div class="wpp-explica">
+          <h3 class="subtitulo">Probá el WhatsApp</h3>
+          <p>
+            Durante la experiencia te van a escribir por whatsapp (por ejemplo, tu jefe). Respondés
+            eligiendo una opción, y cada opción muestra <b>lo que Lukas piensa de verdad</b>.
+          </p>
+          <p>
+            Pero ojo: lo que se envía no siempre es lo mismo que pensaste. Probalo acá ->
+          </p>
+          <button type="button" class="btn btn-amarillo" id="wppReset" hidden>Probar de nuevo</button>
+        </div>
+
+        <div class="wpp" id="wpp">
+          <div class="wpp-top">
+            <span class="wpp-avatar">J</span>
+            <div class="wpp-quien"><b>Jefe</b><small>en línea</small></div>
+          </div>
+          <div class="wpp-msgs" id="wppMsgs" aria-live="polite"></div>
+          <div class="wpp-opciones" id="wppOpc"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rocola / radio -->
+  <section id="musica">
+    <div class="contenedor">
+      <h2 class="titulo-seccion">La radio del local</h2>
+      <p class="intro-seccion">Lukas escucha nu metal todo el día. Elegí un tema de su playlist personal y escuchala mientras lees la web. También vas a poder escuchar estos temas en el unreal, obvio.</p>
+
+      <div class="radio reveal">
+        <span class="antena"></span>
+        <div class="parlante"></div>
+        <div class="radio-centro">
+          <div class="pantalla">
+            <div class="barras" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="pantalla-texto">
+              <span class="tema-banda" id="temaBanda">Limp Bizkit</span>
+              <span class="tema-titulo" id="temaTitulo">My Generation</span>
+            </div>
+          </div>
+          <div class="radio-progreso" id="temaProgreso" aria-hidden="true"><i id="temaBarra"></i></div>
+          <div class="radio-botones">
+            <button type="button" class="rb" id="temaPrev" aria-label="Tema anterior">◀</button>
+            <button type="button" class="rb rb-play" id="temaPlay">▶ Escuchar</button>
+            <button type="button" class="rb" id="temaNext" aria-label="Tema siguiente">▶</button>
+          </div>
+        </div>
+        <div class="parlante"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fases con reloj -->
+  <section id="fases">
+    <div class="contenedor">
+      <h2 class="titulo-seccion">Un día en el local</h2>
+      <p class="intro-seccion">Cuatro momentos del día. Tocá el reloj y el tiempo avanza.</p>
+
+      <div class="fases-wrap">
+
+        <!-- Reloj -->
+        <div class="reloj-col">
+          <button type="button" class="reloj-btn" id="reloj" aria-label="Avanzar a la siguiente fase">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="100" cy="100" r="96" fill="#efe5cf" stroke="#000" stroke-width="6"/>
+              <circle cx="100" cy="100" r="86" fill="none" stroke="#2c365e" stroke-width="2" stroke-dasharray="2 5"/>
+              <g id="marcasReloj"></g>
+              <text x="100" y="40" text-anchor="middle" class="num-reloj">12</text>
+              <text x="166" y="108" text-anchor="middle" class="num-reloj">3</text>
+              <text x="100" y="176" text-anchor="middle" class="num-reloj">6</text>
+              <text x="34" y="108" text-anchor="middle" class="num-reloj">9</text>
+              <g id="manoMinuto" class="mano"><line x1="100" y1="108" x2="100" y2="26" stroke="#2c365e" stroke-width="4" stroke-linecap="round"/></g>
+              <g id="manoHora" class="mano"><line x1="100" y1="108" x2="100" y2="50" stroke="#ff0054" stroke-width="8" stroke-linecap="round"/></g>
+              <circle cx="100" cy="100" r="9" fill="#000"/>
+              <circle cx="100" cy="100" r="4" fill="#9ef000"/>
+            </svg>
+          </button>
+          <div class="reloj-digital" id="relojDigital">9:00 AM</div>
+          <p class="reloj-pista">↑ tocá el reloj</p>
+          <div class="pills" id="pills">
+            <button type="button" class="pill activa" data-i="0">9:00</button>
+            <button type="button" class="pill" data-i="1">12:00</button>
+            <button type="button" class="pill" data-i="2">15:00</button>
+            <button type="button" class="pill" data-i="3">20:00</button>
+          </div>
+        </div>
+
+        <!-- Paneles de las fases (se ve uno por vez) -->
+        <div class="paneles" id="paneles">
+
+          <!-- FASE 1 -->
+          <article class="panel-fase activa" data-fase="intro">
+            <div class="tarjeta">
+              <span class="cinta"></span>
+              <div class="fase-card" data-rasgado="7">
+                <span class="etiqueta">Fase graffiti · 9:00 AM</span>
+                <h3>Un día largo</h3>
+                <p>
+                  Lukas llega temprano al local, con las luces apagadas, y descubre que su
+                  compañero Pedro faltó otra vez: hoy atiende solo. Ya en primera persona,
+                  recorrés el local hasta que suena una notificación de WhatsApp en la compu
+                  del mostrador. Un QR te lleva al chat real con su jefe, que le pide limpiar
+                  la vidriera y abrir el local.
+                </p>
+                <p>
+                  Al lado del balde hay una lata de aerosol, pero al intentar graffitear solo
+                  puede escribir carteles aburridos, como “Aceptamos todas las tarjetas” o
+                  “10% OFF en efectivo”. Termina de "limpiar" y vuelve a entrar al local.
+                </p>
+                <div class="cita">
+                  <button type="button" class="btn-audio" data-audio="audio/fase1.mp3"><span class="ic">▶</span><span class="lbl">Escuchar a Lukas</span></button>
+                  <q>Hoy va a ser un día largo.</q>
+                </div>
+
+
+                </ul>
+              </div>
+            </div>
+
+          <div class="pila" data-pila tabindex="0" role="button" aria-label="Pasar a la siguiente captura de la fase graffiti">
+            <div class="pila-fotos">
+              <figure class="foto"><img class="foto-img" src="img/fase1-1.png" alt="Captura 1 de la fase graffiti" data-fallback="Captura 1 · Fase 1"><figcaption>9:00 · captura 1</figcaption></figure>
+              <figure class="foto"><img class="foto-img" src="img/fase1-2.png" alt="Captura 2 de la fase graffiti" data-fallback="Captura 2 · Fase 1"><figcaption>9:00 · captura 2</figcaption></figure>
+              <figure class="foto"><img class="foto-img" src="img/fase1-3.png" alt="Captura 3 de la fase graffiti" data-fallback="Captura 3 · Fase 1"><figcaption>9:00 · captura 3</figcaption></figure>
+            </div>
+            <div class="pila-pie">
+              <span class="pila-cont">1 de 3</span>
+              <span class="pila-texto">Tocá la foto para revelar la siguiente</span>
+            </div>
+          </div>
+          </article>
+
+          <!-- FASE 2 -->
+          <article class="panel-fase" data-fase="hambre">
+            <div class="tarjeta">
+              <span class="cinta"></span>
+              <div class="fase-card" data-rasgado="7">
+                <span class="etiqueta">Fase hambre · 12:00 PM</span>
+                <h3>El mundo de la comida</h3>
+                <p>
+                  Mientras ordena las rueditas de skate en las cajas debajo del mostrador, a
+                  Lukas le suena la panza y piensa en la heladera del taller. Al abrirla, una
+                  luz lo ciega y lo transporta a un mundo ideal lleno de sus comidas
+                  favoritas, con carteles que lo invitan y tientan.
+                </p>
+                <p>
+                  Pero cuando se acerca, la comida se aleja y suena un error: no puede tocar
+                  nada. Al fondo del recorrido hay otra heladera. Al abrirla, un pestañeo lo
+                  devuelve al local, justo donde estaba, con la tarea todavía por terminar.
+                </p>
+                <div class="cita">
+                  <button type="button" class="btn-audio" data-audio="audio/fase2.mp3"><span class="ic">▶</span><span class="lbl">Escuchar a Lukas</span></button>
+                  <q>Qué hambre que tengo, ojalá hubiese sido real.</q>
+                </div>
+                
+              </div>
+            </div>
+
+          <div class="pila" data-pila tabindex="0" role="button" aria-label="Pasar a la siguiente captura de la fase hambre">
+            <div class="pila-fotos">
+              <figure class="foto"><img class="foto-img" src="img/fase2-1.png" alt="Captura 1 de la fase hambre" data-fallback="Captura 1 · Fase 2"><figcaption>12:00 · captura 1</figcaption></figure>
+              <figure class="foto"><img class="foto-img" src="img/fase2-2.png" alt="Captura 2 de la fase hambre" data-fallback="Captura 2 · Fase 2"><figcaption>12:00 · captura 2</figcaption></figure>
+              <figure class="foto"><img class="foto-img" src="img/fase2-3.png" alt="Captura 3 de la fase hambre" data-fallback="Captura 3 · Fase 2"><figcaption>12:00 · captura 3</figcaption></figure>
+            </div>
+            <div class="pila-pie">
+              <span class="pila-cont">1 de 3</span>
+              <span class="pila-texto">Tocá la foto para revelar la siguiente</span>
+            </div>
+          </div>
+          </article>
+
+          <!-- FASE 3 -->
+          <article class="panel-fase" data-fase="concierto">
+            <div class="tarjeta">
+              <span class="cinta"></span>
+              <div class="fase-card" data-rasgado="7">
+                <span class="etiqueta">Fase concierto · 15:00 PM</span>
+                <h3>Entradas agotadas</h3>
+                <p>
+                  Mientras barre el taller, Lukas prende la tele y pasan un recital de Limp
+                  Bizkit, su banda favorita. En pantalla aparece un QR para comprar entradas:
+                  entra a la web, pero salta un cartel que dice que no quedan más.
+                </p>
+                <p>
+                  Un amigo le escribe por WhatsApp para preguntarle si va. Lukas quiere
+                  decirle que sí, pero sus mensajes no reflejan lo que siente. Con bronca, va
+                  al baño a mojarse la cara y, al abrir la puerta, aparece en pleno recital:
+                  lejos del escenario, entre el pogo. Se abre paso hasta el frente, alguien
+                  lo empuja y queda aturdido. Cierra los ojos y vuelve a estar frente al
+                  espejo del baño.
+                </p>
+                <div class="cita">
+                  <button type="button" class="btn-audio" data-audio="audio/fase3.mp3"><span class="ic">▶</span><span class="lbl">Escuchar a Lukas</span></button>
+                  <q>Uy, re flashee me parece. Sigo en el laburo.</q>
+                </div>
+              
+              </div>
+            </div>
+
+          <div class="pila" data-pila tabindex="0" role="button" aria-label="Pasar a la siguiente captura de la fase concierto">
+            <div class="pila-fotos">
+              <figure class="foto"><img class="foto-img" src="img/fase3-1.jpeg" alt="Captura 1 de la fase concierto" data-fallback="Captura 1 · Fase 3"><figcaption>15:00 · captura 1</figcaption></figure>
+              <figure class="foto"><img class="foto-img" src="img/fase3-2.png" alt="Captura 2 de la fase concierto" data-fallback="Captura 2 · Fase 3"><figcaption>15:00 · captura 2</figcaption></figure>
+              <figure class="foto"><img class="foto-img" src="img/fase3-3.jpeg" alt="Captura 3 de la fase concierto" data-fallback="Captura 3 · Fase 3"><figcaption>15:00 · captura 3</figcaption></figure>
+            </div>
+            <div class="pila-pie">
+              <span class="pila-cont">1 de 3</span>
+              <span class="pila-texto">Tocá la foto para revelar la siguiente</span>
+            </div>
+          </div>
+          </article>
+
+          <!-- FASE 4 -->
+          <article class="panel-fase" data-fase="final">
+            <div class="tarjeta">
+              <span class="cinta"></span>
+              <div class="fase-card" data-rasgado="7">
+                <span class="etiqueta">Fase sueño · 20:00 PM</span>
+                <h3>El sueño de Lukas</h3>
+                <p>
+                  Es el final del día su jefe
+                  le escribe que no se olvide del cierre de caja. Mientras cuenta las
+                  ganancias (con sonido de casino, "chachinggg" para darle un toque), el audio se va llenando de reverb hasta que
+                  se queda dormido.
+                </p>
+                <p>
+                  Despierta en un espacio donde están todos sus deseos juntos, y ahí se
+                  encuentra con su reflejo: él mismo, pero más feliz. Para despertar tiene que
+                  encontrar lo que más ama, en sus recuerdos. Entre fotos amontonadas de sus
+                  responsabilidades, las va corriendo hasta llegar a la última: Lukas de
+                  chiquito con su primer skate. Su reflejo lo felicita y lo hace pensar dónde
+                  dejó sus pasiones.
+                </p>
+                <div class="cita">
+                  <button type="button" class="btn-audio" data-audio="audio/fase4.mp3"><span class="ic">▶</span><span class="lbl">Escuchar a Lukas</span></button>
+                  <q>¿Hace cuánto no hago algo solo porque me pinta?</q>
+                </div>
+                <blockquote class="cierre">
+                  Armonoia solo quería hacerte vivir que a veces lo que uno quiere hacer
+                  relega las pasiones. Ninguna está mal, lo bueno es poder combinarlas.
+                </blockquote>
+                
+                </ul>
+              </div>
+            </div>
+
+          <div class="pila" data-pila tabindex="0" role="button" aria-label="Pasar a la siguiente captura de la fase sueño">
+            <div class="pila-fotos">
+              <figure class="foto"><img class="foto-img" src="img/fase4-1.png" alt="Captura 1 de la fase sueño" data-fallback="Captura 1 · Fase 4"><figcaption>20:00 · captura 1</figcaption></figure>
+              <figure class="foto"><img class="foto-img" src="img/fase4-2.png" alt="Captura 2 de la fase sueño" data-fallback="Captura 2 · Fase 4"><figcaption>20:00 · captura 2</figcaption></figure>
+              <figure class="foto"><img class="foto-img" src="img/fase4-3.png" alt="Captura 3 de la fase sueño" data-fallback="Captura 3 · Fase 4"><figcaption>20:00 · captura 3</figcaption></figure>
+            </div>
+            <div class="pila-pie">
+              <span class="pila-cont">1 de 3</span>
+              <span class="pila-texto">Tocá la foto para revelar la siguiente</span>
+            </div>
+          </div>
+          </article>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Equipo -->
+  <section id="equipo">
+    <div class="contenedor">
+      <h2 class="titulo-seccion">Quiénes lo hicimos</h2>
+      <ul class="equipo reveal">
+        <li>Battafarano, Bautista</li>
+        <li>Bustos, Juliana</li>
+        <li>Da Silva Laco, Lautaro</li>
+        <li>Eiriz, Victoria</li>
+        <li>Minervino, Agustina</li>
+        <li>San Martin, Victoria</li>
+        <li>Varetto, Santino</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <div class="peligro"></div>
+    <div class="contenedor">
+      Proyecto académico · Experiencia interactiva en Unreal Engine 5. DMT6AV
+    </div>
+  </footer>
+
+  <script src="lukas.js"></script>
+  <script src="armonoia.js"></script>
+</body>
+</html>

@@ -1,0 +1,333 @@
+/* ============================================================
+   ARMONOIA · ajustes extra (se carga DESPUÉS de lukas.css y armonoia.css)
+   0. Arreglos (reloj fijo, inclinaciones)
+   1. Todo un poco más grande
+   2. Fuente manuscrita en los cuadros del WhatsApp
+   3. Radio con mp3 (barra de progreso + volumen)
+   4. Pila de polaroids de las fases (centrada)
+   5. Transiciones con el scroll
+   ============================================================ */
+
+/* ---------- 0. ARREGLOS ---------- */
+
+/* a) Que el reloj se quede fijo al scrollear */
+section {
+  overflow: hidden; /* respaldo para navegadores viejos */
+  overflow: clip;   /* recorta igual, pero deja que funcione el sticky */
+}
+
+/* b) Que las tarjetas de "Cómo se juega" y la radio mantengan su inclinación */
+.ctrl:nth-child(odd) { transform: none; rotate: -0.8deg; }
+.ctrl:nth-child(even) { transform: none; rotate: 0.9deg; }
+.radio { transform: none; rotate: -1deg; }
+
+.js .ctrl.reveal:not(.visible),
+.js .radio.reveal:not(.visible) {
+  transform: translateY(26px);
+}
+
+/* ---------- 1. TAMAÑO GENERAL ----------
+   Todo lo que está en rem crece con esto (112.5% = 12% más grande).
+   Si lo querés todavía más grande: 118%. Más chico: 106%. */
+html {
+  font-size: 112.5%;
+}
+
+.contenedor {
+  width: min(1240px, 92%);
+}
+
+@media (max-width: 700px) {
+  html {
+    font-size: 100%; /* en celular ya se ve grande */
+  }
+}
+
+/* ---------- 2. WHATSAPP CON LETRA MANUSCRITA ---------- */
+.wpp .burbuja {
+  font-family: var(--f-manuscrita);
+  font-size: 1.5rem;
+  line-height: 1.25;
+}
+
+.wpp .opcion {
+  font-family: var(--f-manuscrita);
+  font-size: 1.4rem;
+  line-height: 1.25;
+}
+
+/* ---------- 3. RADIO ---------- */
+.radio-progreso {
+  height: 12px;
+  margin: 14px 0 0;
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid #000;
+  cursor: pointer;
+}
+
+.radio-progreso i {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--verde);
+}
+
+button.rb-play {
+  cursor: pointer;
+}
+
+/* Las barritas de la pantalla solo se mueven cuando suena música */
+.radio .barras i {
+  animation-play-state: paused;
+}
+
+.radio.sonando .barras i {
+  animation-play-state: running;
+}
+
+/* Volumen (lo arma armonoia.js, en una fila debajo de los botones) */
+.radio-vol {
+  flex: 1 1 100%;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 6px;
+}
+
+.rb-vol {
+  min-width: 58px;
+  padding: 4px 12px;
+}
+
+.radio-vol input[type="range"] {
+  --v: 70%;
+  flex: 1;
+  min-width: 0;
+  height: 14px;
+  margin: 0;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  background: linear-gradient(to right, var(--verde) var(--v), rgba(0, 0, 0, 0.5) var(--v));
+  border: 2px solid #000;
+}
+
+.radio-vol input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 28px;
+  background: var(--papel);
+  border: 3px solid #000;
+  box-shadow: 0 3px 0 #000;
+}
+
+.radio-vol input[type="range"]::-moz-range-thumb {
+  width: 14px;
+  height: 22px;
+  background: var(--papel);
+  border: 3px solid #000;
+  border-radius: 0;
+  box-shadow: 0 3px 0 #000;
+}
+
+.radio-vol input[type="range"]:focus-visible {
+  outline: 3px dashed var(--amarillo);
+  outline-offset: 4px;
+}
+
+/* ---------- 4. PILA DE POLAROIDS ----------
+   armonoia.js las saca de cada panel y las pone en este contenedor,
+   centrado en la página, debajo del reloj y la tarjeta. */
+.pilas-centro {
+  display: flex;
+  justify-content: center;
+}
+
+.pilas-centro .pila:not(.pila-activa) {
+  display: none;
+}
+
+.pilas-centro .pila-activa {
+  animation: pilaEntra 0.5s ease;
+}
+
+@keyframes pilaEntra {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: none; }
+}
+
+.pila {
+  width: min(100%, 760px);
+  margin: 64px auto 0;
+  cursor: pointer;
+  outline-offset: 10px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.pila:focus-visible {
+  outline: 3px dashed var(--amarillo);
+}
+
+/* todas las fotos en la misma celda: el alto lo da la más alta */
+.pila-fotos {
+  display: grid;
+  padding: 0 14px 22px;
+}
+
+.foto {
+  grid-area: 1 / 1;
+  position: relative;
+  margin: 0;
+  background: #f5f1e6;
+  padding: 16px 16px 0;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.5);
+  --d: 0;
+  --r: -1.5deg;
+  --vx: -75%;
+  --vr: -14deg;
+  z-index: calc(10 - var(--d));
+  transform: translateY(calc(var(--d) * 12px)) rotate(var(--r)) scale(calc(1 - var(--d) * 0.035));
+  transition: transform 0.75s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.55s ease;
+}
+
+.foto:nth-child(3n + 2) { --r: 2deg; --vx: 75%; --vr: 12deg; }
+.foto:nth-child(3n) { --r: -2.5deg; --vx: -70%; --vr: -9deg; }
+
+/* la que ya pasó se va volando hacia un costado */
+.foto.se-fue {
+  transform: translate(var(--vx), -14%) rotate(var(--vr));
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* cinta que la sostiene */
+.foto::before {
+  content: "";
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  width: 110px;
+  height: 30px;
+  margin-left: -55px;
+  transform: rotate(-2deg);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.18) 50%, rgba(255, 255, 255, 0.4));
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  z-index: 2;
+}
+
+.foto-img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  background: #14091e;
+  transition: filter 1.6s ease;
+}
+
+/* si falta la imagen, el cuadro punteado ocupa el mismo lugar */
+.foto .placeholder.foto-img {
+  display: flex;
+  padding: 10px;
+  font-size: 1.1rem;
+  color: var(--azul);
+  border-color: var(--azul);
+  background: rgba(44, 54, 94, 0.12);
+}
+
+/* foto sin revelar: oscura y borrosa; al quedar arriba se "revela" sola */
+.foto.oscura .foto-img {
+  filter: brightness(0.18) sepia(0.9) blur(6px);
+}
+
+.foto.se-fue .foto-img {
+  transition-delay: 0.7s;
+}
+
+.foto figcaption {
+  font-family: var(--f-manuscrita);
+  font-size: 1.7rem;
+  line-height: 1;
+  text-align: center;
+  color: var(--azul);
+  padding: 14px 0 16px;
+}
+
+.pila-pie {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 18px;
+  padding: 0 14px;
+}
+
+.pila-cont {
+  flex: none;
+  font-family: var(--f-titulos);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.95rem;
+  background: var(--amarillo);
+  color: var(--violeta);
+  border: 2px solid #000;
+  padding: 2px 12px;
+  transform: rotate(-2deg);
+}
+
+.pila-texto {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ---------- 5. TRANSICIONES CON EL SCROLL ----------
+   lukas/armonoia.js escriben --z (qué tan grande está) según el scroll.
+   Se usa la propiedad "scale" para no pisar las rotaciones de cada papel. */
+.titulo-seccion,
+.choque,
+.nota,
+.ficha-marco,
+.ctrl,
+.wpp,
+.radio,
+.tarjeta,
+.pila,
+.equipo {
+  scale: var(--z, 1);
+}
+
+.titulo-seccion {
+  transform-origin: left center;
+}
+
+.logo-collage {
+  scale: var(--zl, 1);
+  margin-bottom: 34px;
+}
+
+/* barra de progreso de lectura en el menú */
+.nav::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 4px;
+  background: var(--verde);
+  transform-origin: left center;
+  transform: scaleX(var(--progreso, 0));
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .titulo-seccion, .choque, .nota, .ficha-marco, .ctrl, .wpp, .radio, .tarjeta, .pila, .equipo, .logo-collage {
+    scale: 1;
+  }
+
+  .foto,
+  .foto-img {
+    transition: none;
+  }
+
+  .pilas-centro .pila-activa {
+    animation: none;
+  }
+}
