@@ -2268,6 +2268,17 @@ footer .peligro {
   animation-delay: calc(var(--inicio) + 8 * var(--salto) + 0.45s);
 }
 
+/* Sin botonera: queda solo la línea verde de progreso arriba de todo */
+.nav {
+  height: 0;
+  background: none;
+  border-bottom: 0;
+}
+
+.nav .contenedor {
+  display: none;
+}
+
 @keyframes pegarPalabra {
   from { opacity: 0; scale: 1.8; translate: 0 -24px; }
   to   { opacity: 1; scale: 1;   translate: 0 0; }
