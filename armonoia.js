@@ -162,7 +162,9 @@ document.documentElement.classList.add("js");
   //  abrís la página.
   // ============================================================
   // Qué parte de la hoja se rompe (0.58 = 58% del ancho). Más grande = se ve más logo.
-  const HOYO = { ancho: 0.58, alto: 0.74 };
+   const HOYO = window.matchMedia("(max-width: 700px)").matches
+    ? { ancho: 0.8, alto: 0.78 }
+    : { ancho: 0.58, alto: 0.74 };
 
   function armarHoja() {
     const hoja = $("#hojaLogo");

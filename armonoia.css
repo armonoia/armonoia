@@ -2239,6 +2239,25 @@ footer .peligro {
 .rescate span:nth-child(7) { --i: 6; }
 .rescate span:nth-child(8) { --i: 7; }
 
+/* Logo: va arriba de la hoja y del fondo, así nada lo tapa */
+.logo-collage > .logo {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  rotate: -0.4deg;   /* antes: -2deg del logo + 1.6deg del fondo */
+  height: 69%;       /* mismo tamaño que antes */
+  width: auto;
+  max-width: 85%;
+  object-fit: contain;
+}
+
+.logo-collage > .logo.placeholder {
+  min-height: 50%;
+  font-size: 1.8rem;
+}
+
 /* 3) Los botones aparecen cuando terminó la última palabra */
 .hero .btn {
   animation: fundidoSube 0.7s ease-out backwards;
