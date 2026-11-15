@@ -234,7 +234,7 @@ document.documentElement.classList.add("js");
   document.addEventListener("keydown", (e) => {
     const t = teclas[e.key.toLowerCase()];
     if (t && !e.ctrlKey && !e.metaKey && !e.altKey) {
-      if (!e.repeat) sonar("audio/tecla.mp3", 0.5);
+      if (!e.repeat) sonar("armonoia/audio/tecla.mp3", 0.5);
       t.classList.add("activa");
     }
   });
@@ -421,10 +421,10 @@ document.documentElement.classList.add("js");
   //  "titulo" es lo que se lee en la pantallita de la radio.
   // ============================================================
   const TEMAS = [
-    { banda: "Limp Bizkit", titulo: "Break Stuff", archivo: "audio/musica/limp-bizkit.mp3" },
-    { banda: "Linkin Park", titulo: "One Step Closer", archivo: "audio/musica/linkin-park.mp3" },
-    { banda: "Korn", titulo: "Blind", archivo: "audio/musica/korn.mp3" },
-    { banda: "Alice in Chains", titulo: "Would?", archivo: "audio/musica/alice-in-chains.mp3" },
+    { banda: "Limp Bizkit", titulo: "Break Stuff", archivo: "armonoia/audio/musica/limp-bizkit.mp3" },
+    { banda: "Linkin Park", titulo: "One Step Closer", archivo: "armonoia/audio/musica/linkin-park.mp3" },
+    { banda: "Korn", titulo: "Blind", archivo: "armonoia/audio/musica/korn.mp3" },
+    { banda: "Alice in Chains", titulo: "Would?", archivo: "armonoia/audio/musica/alice-in-chains.mp3" },
   ];
 
   const radioEl = $(".radio");
@@ -655,7 +655,7 @@ document.documentElement.classList.add("js");
   $$(".pasos").forEach((ol) => $$(".paso", ol).forEach((p, k) => p.style.setProperty("--i", k)));
 
   // Sonido del spray: poné tu mp3 en audio/graffiti.mp3 (si falta, simplemente no suena)
-  const sonidoGraffiti = new Audio("audio/graffiti.mp3");
+  const sonidoGraffiti = new Audio("armonoia/audio/graffiti.mp3");
   sonidoGraffiti.preload = "none";
   sonidoGraffiti.volume = 0.6;
 
@@ -822,7 +822,7 @@ document.documentElement.classList.add("js");
     }
 
     function avanzar() {
-      sonar("audio/polaroid.mp3", 0.6); // ruido de foto / papel (poné tu mp3 en audio/polaroid.mp3)
+      sonar("armonoia/audio/polaroid.mp3", 0.6); // ruido de foto / papel (poné tu mp3 en audio/polaroid.mp3)
       visto = true;
       actual = (actual + 1) % total;
       pintar();
