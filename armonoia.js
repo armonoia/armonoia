@@ -424,7 +424,7 @@ document.documentElement.classList.add("js");
     { banda: "Limp Bizkit", titulo: "Break Stuff", archivo: "armonoia/audio/musica/Limp-Bizkit.mp3" },
     { banda: "Linkin Park", titulo: "One Step Closer", archivo: "armonoia/audio/musica/Linkin-Park.mp3" },
     { banda: "Korn", titulo: "Blind", archivo: "armonoia/audio/musica/Korn.mp3" },
-    { banda: "Alice in Chains", titulo: "Would?", archivo: "armonoia/audio/musica/Alice-In-Chains.mp3" },
+    { banda: "Alice in Chains", titulo: "Would?", archivo: "armonoia/audio/musica/Alice-In-Chains" },
   ];
 
   const radioEl = $(".radio");
