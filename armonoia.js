@@ -421,10 +421,10 @@ document.documentElement.classList.add("js");
   //  "titulo" es lo que se lee en la pantallita de la radio.
   // ============================================================
   const TEMAS = [
-    { banda: "Limp Bizkit", titulo: "Break Stuff", archivo: "armonoia/audio/musica/limp-bizkit.mp3" },
-    { banda: "Linkin Park", titulo: "One Step Closer", archivo: "armonoia/audio/musica/linkin-park.mp3" },
-    { banda: "Korn", titulo: "Blind", archivo: "armonoia/audio/musica/korn.mp3" },
-    { banda: "Alice in Chains", titulo: "Would?", archivo: "armonoia/audio/musica/alice-in-chains.mp3" },
+    { banda: "Limp Bizkit", titulo: "Break Stuff", archivo: "armonoia/audio/musica/Limp-Bizkit.mp3" },
+    { banda: "Linkin Park", titulo: "One Step Closer", archivo: "armonoia/audio/musica/Linkin-Park.mp3" },
+    { banda: "Korn", titulo: "Blind", archivo: "armonoia/audio/musica/Korn.mp3" },
+    { banda: "Alice in Chains", titulo: "Would?", archivo: "armonoia/audio/musica/Alice-In-Chains.mp3" },
   ];
 
   const radioEl = $(".radio");
