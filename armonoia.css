@@ -2213,11 +2213,20 @@ footer .peligro {
   .mouse i { animation: none; background: var(--verde); }
 }
 
-/* ---------- Título "carta de rescate": las palabras se pegan de a una ---------- */
-.rescate span {
-  --inicio: 1.2s;   /* cuándo arranca la primera palabra (subilo si querés esperar al logo) */
+/* ---------- Portada: todo aparece en secuencia ---------- */
+.hero {
+  --inicio: 1.2s;   /* cuándo arranca la primera palabra del título */
   --salto: 0.45s;   /* tiempo entre palabra y palabra */
-  animation: pegarPalabra 0.5s cubic-bezier(0.2, 1.4, 0.4, 1) both;
+}
+
+/* 1) El sobretítulo entra con un fade suave */
+.hero .sobretitulo {
+  animation: fundidoSube 0.8s ease-out 0.3s backwards;
+}
+
+/* 2) Las palabras del título se pegan de a una */
+.rescate span {
+  animation: pegarPalabra 0.5s cubic-bezier(0.2, 1.4, 0.4, 1) backwards;
   animation-delay: calc(var(--inicio) + var(--i) * var(--salto));
 }
 
@@ -2230,12 +2239,29 @@ footer .peligro {
 .rescate span:nth-child(7) { --i: 6; }
 .rescate span:nth-child(8) { --i: 7; }
 
+/* 3) Los botones aparecen cuando terminó la última palabra */
+.hero .btn {
+  animation: fundidoSube 0.7s ease-out backwards;
+  animation-delay: calc(var(--inicio) + 8 * var(--salto) + 0.2s);
+}
+
+.hero .btn + .btn {
+  animation-delay: calc(var(--inicio) + 8 * var(--salto) + 0.45s);
+}
+
 @keyframes pegarPalabra {
   from { opacity: 0; scale: 1.8; translate: 0 -24px; }
   to   { opacity: 1; scale: 1;   translate: 0 0; }
 }
 
+@keyframes fundidoSube {
+  from { opacity: 0; translate: 0 14px; }
+  to   { opacity: 1; translate: 0 0; }
+}
+
 /* Si la persona prefiere menos movimiento, aparece todo junto */
 @media (prefers-reduced-motion: reduce) {
-  .rescate span { animation: none; }
+  .hero .sobretitulo,
+  .rescate span,
+  .hero .btn { animation: none; }
 }

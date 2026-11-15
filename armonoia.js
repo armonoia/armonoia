@@ -51,9 +51,28 @@ document.documentElement.classList.add("js");
   const WIGGLE_FPS = 25;       // velocidad del wiggle (más bajo = más lento; el video original va a 25)
 
   if (logoVideo) {
+    // Respaldo: si el video no arranca, se muestra el logo con su wiggle en loop
+    const mostrarLogoFijo = (animado = true) => {
+      if (!logoVideo.isConnected) return; // ya lo reemplazó el wiggle
+      const img = document.createElement("img");
+      img.className = logoVideo.className;
+      img.src = animado ? "logo-wiggle.webp" : "logo-final.png";
+      img.alt = logoVideo.getAttribute("aria-label") || "Logo";
+      logoVideo.replaceWith(img);
+    };
+
+    if (!sinMovimiento) {
+      logoVideo.addEventListener("error", () => mostrarLogoFijo());
+      const fuente = logoVideo.querySelector("source");
+      if (fuente) fuente.addEventListener("error", () => mostrarLogoFijo());
+      // Si a los 4 segundos el video sigue sin arrancar, algo falló
+      setTimeout(() => {
+        if (logoVideo.isConnected && logoVideo.paused && logoVideo.currentTime === 0) mostrarLogoFijo();
+      }, 4000);
+    }
+
     if (sinMovimiento) {
-      logoVideo.removeAttribute("autoplay");
-      logoVideo.pause();
+      mostrarLogoFijo(false);
     } else if (logoVideo.requestVideoFrameCallback) {
       // Un lienzo por fotograma: se van turnando y siempre quedan guardados los últimos N
       const lienzos = Array.from({ length: WIGGLE_FOTOGRAMAS }, () => document.createElement("canvas"));
