@@ -1,8 +1,3 @@
-// ============================================================
-//  ARMONOIA · todo el JavaScript de la página en un solo archivo
-// ============================================================
-
-// Avisa al CSS que hay JavaScript (activa las animaciones de aparición)
 document.documentElement.classList.add("js");
 
 (function () {
@@ -21,17 +16,13 @@ document.documentElement.classList.add("js");
       base = sonidosBase[archivo] = new Audio(archivo);
       base.preload = "auto";
     }
-    const a = base.cloneNode(); // un clon por vez, así se pueden superponer si tocás rápido
+    const a = base.cloneNode(); 
     a.volume = volumen === undefined ? 0.6 : volumen;
     const p = a.play();
     if (p && p.catch) p.catch(() => {});
   }
 
-  // ============================================================
-  //  1. IMÁGENES Y VIDEO QUE FALTAN
-  //  Si no existe el archivo, se muestra un cuadro punteado con el
-  //  texto de data-fallback, así la página no queda rota.
-  // ============================================================
+  
   $$("img[data-fallback], video[data-fallback]").forEach((el) => {
     const reemplazar = () => {
       const caja = document.createElement("div");
@@ -45,12 +36,12 @@ document.documentElement.classList.add("js");
   });
 
   // Video del logo: se reproduce una vez y al terminar se queda repitiendo
-  // sus últimos fotogramas (el wiggle de las letras) hasta que se refresque.
+
   const logoVideo = $("video.logo");
   const WIGGLE_FOTOGRAMAS = 10; // cuántos fotogramas finales se repiten
   const WIGGLE_FPS = 25;       // velocidad del wiggle (más bajo = más lento; el video original va a 25)
 
-  if (logoVideo) {
+   if (logoVideo) {
     // Respaldo: si el video no arranca, se muestra el logo con su wiggle en loop
     const mostrarLogoFijo = (animado = true) => {
       if (!logoVideo.isConnected) return; // ya lo reemplazó el wiggle
@@ -65,10 +56,39 @@ document.documentElement.classList.add("js");
       logoVideo.addEventListener("error", () => mostrarLogoFijo());
       const fuente = logoVideo.querySelector("source");
       if (fuente) fuente.addEventListener("error", () => mostrarLogoFijo());
-      // Si a los 4 segundos el video sigue sin arrancar, algo falló
-      setTimeout(() => {
-        if (logoVideo.isConnected && logoVideo.paused && logoVideo.currentTime === 0) mostrarLogoFijo();
-      }, 4000);
+
+      // Los navegadores frenan los videos automáticos que están fuera de pantalla.
+      // Al refrescar con la página scrolleada, el logo no arranca: cuando aparece, lo reiniciamos.
+      let vigilando;
+      const revisarLogo = () => {
+        if (!logoVideo.isConnected) return;
+        if (logoVideo.paused && !logoVideo.ended) {
+          logoVideo.currentTime = 0;
+          const p = logoVideo.play();
+          if (p && p.catch) p.catch(() => {});
+        }
+        // Si a los 4 segundos de verlo sigue sin avanzar, se muestra el respaldo
+        clearTimeout(vigilando);
+        vigilando = setTimeout(() => {
+          if (logoVideo.isConnected && logoVideo.currentTime === 0) mostrarLogoFijo();
+        }, 4000);
+      };
+
+      const caja = $(".logo-collage") || logoVideo;
+      if ("IntersectionObserver" in window) {
+        const ojo = new IntersectionObserver(
+          (entradas) => {
+            if (entradas.some((e) => e.isIntersecting)) {
+              revisarLogo();
+              ojo.disconnect();
+            }
+          },
+          { threshold: 0.3 }
+        );
+        ojo.observe(caja);
+      } else {
+        revisarLogo();
+      }
     }
 
     if (sinMovimiento) {
@@ -155,13 +175,6 @@ document.documentElement.classList.add("js");
     bordeRasgado(el, parseFloat(el.dataset.rasgado) || 8);
   });
 
-  // ============================================================
-  //  3. HOJA ROTA DEL LOGO
-  //  La hoja de papel tiene un agujero irregular en el medio, y por
-  //  ahí se ve el logo (el video). El agujero cambia cada vez que
-  //  abrís la página.
-  // ============================================================
-  // Qué parte de la hoja se rompe (0.58 = 58% del ancho). Más grande = se ve más logo.
    const HOYO = window.matchMedia("(max-width: 700px)").matches
     ? { ancho: 0.8, alto: 0.78 }
     : { ancho: 0.58, alto: 0.74 };
