@@ -229,7 +229,7 @@ document.documentElement.classList.add("js");
   });
 
   // Sonido de keycap: audio/tecla.mp3 (al hacer click en la tecla o al apretarla de verdad)
-  $$(".tecla").forEach((t) => t.addEventListener("click", () => sonar("audio/tecla.mp3", 0.5)));
+  $$(".tecla").forEach((t) => t.addEventListener("click", () => sonar("armonoia/audio/tecla.mp3", 0.5)));
 
   document.addEventListener("keydown", (e) => {
     const t = teclas[e.key.toLowerCase()];
