@@ -2212,3 +2212,30 @@ footer .peligro {
 @media (prefers-reduced-motion: reduce) {
   .mouse i { animation: none; background: var(--verde); }
 }
+
+/* ---------- Título "carta de rescate": las palabras se pegan de a una ---------- */
+.rescate span {
+  --inicio: 1.2s;   /* cuándo arranca la primera palabra (subilo si querés esperar al logo) */
+  --salto: 0.45s;   /* tiempo entre palabra y palabra */
+  animation: pegarPalabra 0.5s cubic-bezier(0.2, 1.4, 0.4, 1) both;
+  animation-delay: calc(var(--inicio) + var(--i) * var(--salto));
+}
+
+.rescate span:nth-child(1) { --i: 0; }
+.rescate span:nth-child(2) { --i: 1; }
+.rescate span:nth-child(3) { --i: 2; }
+.rescate span:nth-child(4) { --i: 3; }
+.rescate span:nth-child(5) { --i: 4; }
+.rescate span:nth-child(6) { --i: 5; }
+.rescate span:nth-child(7) { --i: 6; }
+.rescate span:nth-child(8) { --i: 7; }
+
+@keyframes pegarPalabra {
+  from { opacity: 0; scale: 1.8; translate: 0 -24px; }
+  to   { opacity: 1; scale: 1;   translate: 0 0; }
+}
+
+/* Si la persona prefiere menos movimiento, aparece todo junto */
+@media (prefers-reduced-motion: reduce) {
+  .rescate span { animation: none; }
+}
